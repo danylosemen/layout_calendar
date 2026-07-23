@@ -1,39 +1,33 @@
 @use 'sass:list';
 @import './variables';
+@import './reset';
 
 .calendar {
+  box-sizing: border-box;
   width: $columns * $day-size + ($columns - 1) * $gap + $padding * 2;
-
-  &__field {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $gap;
-    padding: $padding;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+  padding: $padding;
 
   &__day {
-    position: relative;
+    box-sizing: border-box;
     width: $day-size;
     height: $day-size;
     background-color: $day-bg-color;
     border: $border-width solid black;
     transition-property: background-color, transform;
     transition-duration: $transition-duration;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
 
     &:hover {
       cursor: pointer;
       background-color: $hover-bg-color;
       transform: translateY(-20px);
-      position: relative;
-      z-index: 1;
-    }
-
-    &::before {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font: #{$day-font-size} $day-font-family;
     }
 
     @for $day-number from 1 through 31 {
